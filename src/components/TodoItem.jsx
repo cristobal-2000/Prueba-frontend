@@ -1,10 +1,22 @@
+import "./style.css"
 import React, { Fragment } from "react";
-
-export function TodoItem({ todo }) {
-  const { id, task } = todo;
+//item en la lista
+export function TodoItem({ todo, cambiarEstado, cerrar }) {
+  const { id, task, descripcion, completed } = todo;
+  const fnCambiarEstado = () => {
+    cambiarEstado(id);
+  }
   return (
     <Fragment>
-      <li className="list-group-item">{todo.task}</li>
+      <ul>
+        <li>
+          <a href="#">
+            <button className="botonx" onClick={()=>cerrar(id)}>x</button>
+            <h2>{task}</h2>
+            <p>{descripcion}</p>
+          </a>
+        </li>
+      </ul>
     </Fragment>
   );
 }
